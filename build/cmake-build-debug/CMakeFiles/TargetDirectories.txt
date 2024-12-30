@@ -1,0 +1,3 @@
+C:/MyFolder/Learn/xLua-build/build/cmake-build-debug/CMakeFiles/xlua.dir
+C:/MyFolder/Learn/xLua-build/build/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/MyFolder/Learn/xLua-build/build/cmake-build-debug/CMakeFiles/rebuild_cache.dir

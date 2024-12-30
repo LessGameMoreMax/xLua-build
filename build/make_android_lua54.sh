@@ -1,17 +1,5 @@
-if [ -n "$ANDROID_NDK" ]; then
-    export NDK=${ANDROID_NDK}
-elif [ -n "$ANDROID_NDK_HOME" ]; then
-    export NDK=${ANDROID_NDK_HOME}
-elif [ -n "$ANDROID_NDK_HOME" ]; then
-    export NDK=${ANDROID_NDK_HOME}
-else
-    export NDK=~/android-ndk-r15c
-fi
-
-if [ ! -d "$NDK" ]; then
-    echo "Please set ANDROID_NDK environment to the root of NDK."
-    exit 1
-fi
+export ANDROID_NDK=C:/MyFolder/ProjectSoftwares/android-ndk-r27c
+export NDK=${ANDROID_NDK}
 
 function build() {
     API=$1
