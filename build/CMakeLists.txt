@@ -21,17 +21,13 @@ option ( LUAC_COMPATIBLE_FORMAT "compatible format" OFF )
 
 set(LUA_SRC_PATH lua-${LUA_VERSION}/src)
 
-set ( LUA_IDSIZE 120 CACHE STRING "gives the maximum size for the description of the source." )
-
-configure_file ( ${LUA_SRC_PATH}/luaconf.h.in ${CMAKE_CURRENT_BINARY_DIR}/luaconf.h )
-
 include_directories(
     ${LUA_SRC_PATH}
-    ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 aux_source_directory(${LUA_SRC_PATH} LUA_CORE)
-list(REMOVE_ITEM LUA_CORE ${LUA_SRC_PATH}/lua.c ${LUA_SRC_PATH}/luac.c)
+#list(REMOVE_ITEM LUA_CORE ${LUA_SRC_PATH}/lua.c ${LUA_SRC_PATH}/luac.c)
+list(REMOVE_ITEM LUA_CORE ${LUA_SRC_PATH}/lua.c)
 
 macro(source_group_by_dir proj_dir source_files)
     if(MSVC OR APPLE)
