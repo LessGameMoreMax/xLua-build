@@ -3,5 +3,5 @@ cmake -DLUA_VERSION=5.4.1 -DCMAKE_TOOLCHAIN_FILE=../cmake/ios.toolchain.cmake -D
 cd ..
 cmake --build build_ios_54 --config Release
 mkdir -p plugin_lua54/Plugins/iOS/
-cp build_ios_54/Release-iphoneos/libxlua.a plugin_lua54/Plugins/iOS/libxlua.a 
+cp build_ios_54/Release-iphoneos/liblua.a plugin_lua54/Plugins/iOS/liblua.a
 
