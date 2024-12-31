@@ -32,7 +32,6 @@ include_directories(
 
 aux_source_directory(${LUA_SRC_PATH} LUA_CORE)
 list(REMOVE_ITEM LUA_CORE ${LUA_SRC_PATH}/lua.c ${LUA_SRC_PATH}/luac.c)
-set ( LUA_LIB )
 
 macro(source_group_by_dir proj_dir source_files)
     if(MSVC OR APPLE)
@@ -52,7 +51,6 @@ macro(source_group_by_dir proj_dir source_files)
 endmacro(source_group_by_dir)
 
 source_group_by_dir(${CMAKE_CURRENT_SOURCE_DIR} LUA_CORE)
-source_group_by_dir(${CMAKE_CURRENT_SOURCE_DIR} LUA_LIB)
 
 if (APPLE)
     if (IOS)
@@ -60,7 +58,6 @@ if (APPLE)
         set(CMAKE_OSX_ARCHITECTURES "$(ARCHS_STANDARD)")
         add_library(lua STATIC
            ${LUA_CORE}
-           ${LUA_LIB}
         )
 		set_xcode_property (lua IPHONEOS_DEPLOYMENT_TARGET "7.0" "all")
     else ()
@@ -70,13 +67,11 @@ if (APPLE)
 
             add_library(lua SHARED
                 ${LUA_CORE}
-                ${LUA_LIB}
             )
         else ()
             set(CMAKE_OSX_ARCHITECTURES "$(ARCHS_STANDARD_64_BIT)")
             add_library(lua MODULE
                 ${LUA_CORE}
-                ${LUA_LIB}
             )
             set_target_properties ( lua PROPERTIES BUNDLE TRUE )
             #set_target_properties ( lua PROPERTIES FRAMEWORK TRUE )
@@ -86,13 +81,11 @@ if (APPLE)
 elseif ("${CMAKE_SYSTEM_NAME}" STREQUAL "Switch")
     add_library(lua STATIC
         ${LUA_CORE}
-        ${LUA_LIB}
     )
     target_compile_options(lua PRIVATE -m64 -mcpu=cortex-a57+fp+simd+crypto+crc -fno-common -fno-short-enums -ffunction-sections -fdata-sections -fPIC -fms-extensions)
 else ( )
     add_library(lua STATIC
         ${LUA_CORE}
-        ${LUA_LIB}
     )
 endif ( )
 
